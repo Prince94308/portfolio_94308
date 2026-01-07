@@ -1,14 +1,14 @@
 // =============================================================================
 // CERTIFICATE IMAGES IMPORTS
 // =============================================================================
-// Certificate images imported from public folder
+// Certificate images imported from src/assets/ folder
 
-const mlCert = '/Machine Learning.png';
-const cloudCert = '/cloud computing.png';
-const googleCert = '/google cloud.png';
-const oracleCert = '/oracle.png';
-const javaCert = '/infosys.png';
-const accentureCert = '/accenture.png';
+import mlCert from '../assets/Machine Learning.png';
+import cloudCert from '../assets/cloud computing.png';
+import googleCert from '../assets/google cloud.png';
+import oracleCert from '../assets/oracle.png';
+import javaCert from '../assets/infosys.png';
+import accentureCert from '../assets/accenture.png';
 // =============================================================================
 
 export const navLinks = [

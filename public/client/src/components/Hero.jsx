@@ -5,7 +5,7 @@ import TextType from "./TextType";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
-import resumePDF from "/Resume-Prince.pdf";
+import resumePDF from "../assets/Resume-Prince.pdf";
 
 // PDF Viewer Modal Component
 const PDFModal = ({ isOpen, pdfUrl, onClose }) => {
@@ -98,19 +98,19 @@ const Hero = () => {
                     </div>
 
                     {/* Main Heading */}
-                    <div className={`${styles.heroHeadText} text-white font-black flex flex-wrap gap-2`}>
+                    <div className={`${styles.heroHeadText} text-white-100 font-black flex flex-wrap gap-2`}>
                         <TextType
                             text={["Prince Kumar"]}
                             typingSpeed={100}
                             cursorCharacter="|"
                             loop={true}
-                            textColors={['#ffffff']}
+                            textColors={['var(--white-100)']}
                             showCursor={true}
                         />
                     </div>
 
                     {/* Sub Heading */}
-                    <div className={`${styles.heroSubText} mt-2 text-white font-bold leading-tight flex flex-wrap gap-2`}>
+                    <div className={`${styles.heroSubText} mt-2 text-white-100 font-bold leading-tight flex flex-wrap gap-2`}>
                         <span className="text-[#33E2E2] flex gap-2">
                             <InteractiveText text="Mern" /> <InteractiveText text="Stack" />
                         </span>
@@ -124,12 +124,12 @@ const Hero = () => {
                     </div>
 
                     {/* Description */}
-                    <p className="mt-6 text-[#dfd9ff] text-[16px] max-w-lg leading-[30px]">
+                    <p className="mt-6 text-secondary text-[16px] max-w-lg leading-[30px]">
                         I craft secure, scalable digital solutions that protect and perform. Specializing in penetration testing, secure architecture, and modern Enterprise  applications with <span className="text-[#33E2E2] font-bold">2+ years</span> of experience.
                     </p>
 
                     {/* Stats */}
-                    <div className="flex flex-row gap-10 mt-10 border-t border-white/10 pt-6 w-[85%]">
+                    <div className="flex flex-row gap-10 mt-10 border-t border-white-100/10 pt-6 w-[85%]">
                         <div className="flex flex-col items-center">
                             <h3 className="text-[#33E2E2] text-3xl font-bold">50+</h3>
                             <p className="text-secondary text-sm uppercase tracking-wider">Projects Completed</p>

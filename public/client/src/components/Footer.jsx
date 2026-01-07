@@ -64,7 +64,7 @@ const Footer = () => {
                                 <FaTwitter className="text-[20px]" />
                             </a>
                             <a
-                                href="mailto:prince@example.com"
+                                href="mailto:princekumar.com"
                                 className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center text-white hover:border-[#FF4500] hover:text-[#FF4500] hover:scale-110 transition-all duration-300"
                                 aria-label="Email"
                             >
@@ -73,7 +73,7 @@ const Footer = () => {
                         </div>
                         <p className="text-secondary text-[14px] mt-2">
                             <FaEnvelope className="inline mr-2" />
-                            prince@example.com
+                            princekumar9162126@gmail.com
                         </p>
                     </div>
                 </div>

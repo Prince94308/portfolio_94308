@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { skills as initialSkills } from "../constants";
 import { SectionWrapper } from "../hoc";
-import myProfileImg from "/prince.jpg";
+import myProfileImg from "../assets/prince.jpg";
 import MagicCard from "./MagicCard";
 import WaveBackground from "./WaveBackground";
 import { FaCode, FaServer, FaShieldAlt, FaCloud, FaLaptopCode, FaEdit, FaCheck, FaTimes, FaPlus, FaTrash } from "react-icons/fa";

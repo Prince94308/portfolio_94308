@@ -11,6 +11,11 @@ import Education from './Education';
 import Certifications from './Certifications';
 import MagicCard from './MagicCard';
 import Footer from './Footer';
+import FootballCursor from './FootballCursor';
+import ClickSound from './ClickSound';
+import SmoothScroll from './SmoothScroll';
+import SimpleLoader from './SimpleLoader';
+import ThemeToggle from './ThemeToggle';
 
 export {
     Hero,
@@ -29,5 +34,10 @@ export {
     Education,
     Certifications,
     MagicCard,
-    Footer
+    Footer,
+    FootballCursor,
+    ClickSound,
+    SmoothScroll,
+    SimpleLoader,
+    ThemeToggle
 };

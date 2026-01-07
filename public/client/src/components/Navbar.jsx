@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 import { navLinks } from "../constants";
 // import { logo, menu, close } from "../assets"; 
@@ -32,7 +33,7 @@ const Navbar = () => {
                     }}
                 >
                     {/* <img src={logo} alt="logo" className="w-9 h-9 object-contain" /> */}
-                    <p className="text-white text-[18px] font-bold cursor-pointer flex">
+                    <p className="text-white-100 text-[18px] font-bold cursor-pointer flex">
                         <span className="text-[#00FFFF]">P</span>
                         <span className="text-[#E233E2]">r</span>
                         <span className="text-[#FF00FF]">i</span>
@@ -51,7 +52,7 @@ const Navbar = () => {
                     {navLinks.map((link) => (
                         <motion.li
                             key={link.id}
-                            className={`${active === link.title ? "text-white" : "text-secondary"
+                            className={`${active === link.title ? "text-white-100" : "text-secondary"
                                 } text-[18px] font-medium cursor-pointer`}
                             onClick={() => setActive(link.title)}
                             whileHover={{
@@ -67,15 +68,14 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                {/* Social Icons (Desktop) */}
-                <div className="hidden sm:flex flex-row gap-5">
+                <div className="hidden sm:flex flex-row gap-5 items-center">
                     {socialLinks.map((social, index) => (
                         <motion.a
                             key={index}
                             href={social.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-white text-2xl cursor-pointer"
+                            className="text-white-100 text-2xl cursor-pointer"
                             whileHover={{
                                 scale: 1.2,
                                 color: social.color,
@@ -86,6 +86,7 @@ const Navbar = () => {
                             <social.icon />
                         </motion.a>
                     ))}
+                    <ThemeToggle />
                 </div>
 
                 <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -94,9 +95,9 @@ const Navbar = () => {
                         onClick={() => setToggle(!toggle)}
                     >
                         {/* Hamburger / Close Icon Placeholder */}
-                        <div className={`h-0.5 w-full bg-white transition-all ${toggle ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-                        <div className={`h-0.5 w-full bg-white transition-all ${toggle ? 'opacity-0' : ''}`}></div>
-                        <div className={`h-0.5 w-full bg-white transition-all ${toggle ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
+                        <div className={`h-0.5 w-full bg-white-100 transition-all ${toggle ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+                        <div className={`h-0.5 w-full bg-white-100 transition-all ${toggle ? 'opacity-0' : ''}`}></div>
+                        <div className={`h-0.5 w-full bg-white-100 transition-all ${toggle ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
                     </div>
 
                     <div
@@ -107,7 +108,7 @@ const Navbar = () => {
                             {navLinks.map((link) => (
                                 <li
                                     key={link.id}
-                                    className={`${active === link.title ? "text-white" : "text-secondary"
+                                    className={`${active === link.title ? "text-white-100" : "text-secondary"
                                         } font-poppins font-medium cursor-pointer text-[16px]`}
                                     onClick={() => {
                                         setToggle(!toggle);
@@ -118,18 +119,19 @@ const Navbar = () => {
                                 </li>
                             ))}
                             {/* Social Icons (Mobile) */}
-                            <div className="flex flex-row gap-4 mt-2 border-t border-gray-600 pt-2 w-full justify-center">
+                            <div className="flex flex-row gap-4 mt-2 border-t border-gray-600 pt-2 w-full justify-center items-center">
                                 {socialLinks.map((social, index) => (
                                     <a
                                         key={index}
                                         href={social.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-white text-xl"
+                                        className="text-white-100 text-xl"
                                     >
                                         <social.icon />
                                     </a>
                                 ))}
+                                <ThemeToggle />
                             </div>
                         </ul>
                     </div>

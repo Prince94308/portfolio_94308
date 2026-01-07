@@ -4,13 +4,57 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: 245 245 245;
+  /* Light mode background */
+  --secondary: 60 60 60;
+  /* Light mode secondary text */
+  --tertiary: 255 255 255;
+  /* Light mode cards */
+  --black-100: 235 235 235;
+  --black-200: 225 225 225;
+  --white-100: 30 30 30;
+  /* Dark text for light mode */
+}
+
+.dark {
+  --primary: 5 8 22;
+  --secondary: 170 166 195;
+  --tertiary: 21 16 48;
+  --black-100: 16 13 37;
+  --black-200: 9 3 37;
+  --white-100: 243 243 243;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
+}
+
+.dark {
   color-scheme: dark;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 .hash-span {
