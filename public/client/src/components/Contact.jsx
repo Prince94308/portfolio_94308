@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
+import { AbstractBallRingCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 
 const Contact = () => {
@@ -140,7 +140,7 @@ const Contact = () => {
       </motion.div>
 
       <motion.div className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
-        <EarthCanvas />
+        <AbstractBallRingCanvas />
       </motion.div>
     </div>
   );

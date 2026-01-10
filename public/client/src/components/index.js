@@ -16,6 +16,7 @@ import ClickSound from './ClickSound';
 import SmoothScroll from './SmoothScroll';
 import SimpleLoader from './SimpleLoader';
 import ThemeToggle from './ThemeToggle';
+import ProjectDetails from './ProjectDetails';
 
 export {
     Hero,
@@ -39,5 +40,6 @@ export {
     ClickSound,
     SmoothScroll,
     SimpleLoader,
-    ThemeToggle
+    ThemeToggle,
+    ProjectDetails
 };

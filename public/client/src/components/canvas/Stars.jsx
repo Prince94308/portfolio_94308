@@ -5,7 +5,7 @@ import * as random from "maath/random/dist/maath-random.esm";
 
 const Stars = (props) => {
     const ref = useRef();
-    const [sphere] = useState(() => random.inSphere(new Float32Array(5001), { radius: 1.2 }));
+    const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.2 }));
 
     useFrame((state, delta) => {
         ref.current.rotation.x -= delta / 10;
@@ -27,12 +27,38 @@ const Stars = (props) => {
     );
 };
 
+const Stars2 = (props) => {
+    const ref = useRef();
+    const [sphere] = useState(() => random.inSphere(new Float32Array(3000), { radius: 1.5 }));
+
+    useFrame((state, delta) => {
+        ref.current.rotation.x -= delta / 20;
+        ref.current.rotation.y += delta / 25;
+    });
+
+    return (
+        <group rotation={[0, 0, Math.PI / 4]}>
+            <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+                <PointMaterial
+                    transparent
+                    color='#804dee'
+                    size={0.003}
+                    sizeAttenuation={true}
+                    depthWrite={false}
+                />
+            </Points>
+        </group>
+    );
+};
+
+
 const StarsCanvas = () => {
     return (
-        <div className='w-full h-auto absolute inset-0 z-[-1]'>
+        <div className='w-full h-full fixed inset-0 z-[-1] bg-black pointer-events-none'>
             <Canvas camera={{ position: [0, 0, 1] }}>
                 <Suspense fallback={null}>
                     <Stars />
+                    <Stars2 />
                 </Suspense>
 
                 <Preload all />

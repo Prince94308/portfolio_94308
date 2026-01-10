@@ -1,206 +1,116 @@
-import React, { Suspense, useRef, useState } from "react";
+import React, { Suspense, useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-    Float,
-    OrbitControls,
-    Preload,
-    Text,
-} from "@react-three/drei";
+import { Text, Preload, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-
 import CanvasLoader from "../Loader";
 
-// Technology colors mapping
-const techColors = {
-    'html': '#E34F26',
-    'css': '#1572B6',
-    'javascript': '#F7DF1E',
-    'typescript': '#3178C6',
-    'reactjs': '#61DAFB',
-    'redux': '#764ABC',
-    'tailwind': '#06B6D4',
-    'nodejs': '#339933',
-    'mongodb': '#47A248',
-    'threejs': '#000000',
-    'git': '#F05032',
-    'figma': '#F24E1E',
-    'docker': '#2496ED',
-};
-
-const Ball = ({ icon, name, position, index }) => {
-    const groupRef = useRef();
-    const meshRef = useRef();
-    const [isFollowing, setIsFollowing] = useState(false);
-    const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...position));
-
-    // Orbital animation parameters
-    const orbitRadius = useRef(0.3 + Math.random() * 0.5);
-    const orbitSpeed = useRef(0.5 + Math.random() * 0.5);
-    const orbitPhase = useRef(Math.random() * Math.PI * 2);
-    const orbitHeight = useRef(Math.random() * 0.3);
-    const basePosition = new THREE.Vector3(...position);
-
-    const techColor = techColors[icon] || '#915EFF';
-
-    useFrame((state, delta) => {
-        if (!groupRef.current || !meshRef.current) return;
-
-        if (isFollowing) {
-            // Smoothly follow target position
-            groupRef.current.position.lerp(targetPosition, 0.05);
-        } else {
-            // Pendulum/Orbital motion in 3D space
-            const time = state.clock.elapsedTime * orbitSpeed.current + orbitPhase.current;
-
-            groupRef.current.position.x = basePosition.x + Math.cos(time) * orbitRadius.current;
-            groupRef.current.position.y = basePosition.y + Math.sin(time * 0.7) * orbitHeight.current;
-            groupRef.current.position.z = basePosition.z + Math.sin(time) * orbitRadius.current * 0.5;
-        }
-
-        // Continuous rotation
-        meshRef.current.rotation.x += delta * 0.3;
-        meshRef.current.rotation.y += delta * 0.5;
-
-        // Pulsing scale effect when following
-        if (isFollowing) {
-            const scale = 1.2 + Math.sin(state.clock.elapsedTime * 3) * 0.1;
-            meshRef.current.scale.setScalar(scale);
-        } else {
-            meshRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.1);
-        }
-    });
-
-    const handleClick = (event) => {
-        event.stopPropagation();
-        setIsFollowing(!isFollowing);
-    };
-
-    const handlePointerMove = (event) => {
-        if (isFollowing) {
-            // Convert mouse position to 3D coordinates
-            const x = (event.clientX / window.innerWidth) * 20 - 10;
-            const y = -(event.clientY / window.innerHeight) * 20 + 10;
-
-            setTargetPosition(new THREE.Vector3(x, y, 0));
-        }
-    };
-
+const TapeItem = ({ text, position, color }) => {
     return (
-        <group
-            ref={groupRef}
-            onClick={handleClick}
-            onPointerMove={handlePointerMove}
-        >
-            <Float speed={1.75} rotationIntensity={0.5} floatIntensity={0.5}>
-                <mesh ref={meshRef} castShadow receiveShadow>
-                    <icosahedronGeometry args={[2.5, 2]} />
-                    <meshStandardMaterial
-                        color={techColor}
-                        emissive={techColor}
-                        emissiveIntensity={isFollowing ? 0.8 : 0.3}
-                        metalness={0.8}
-                        roughness={0.2}
-                        transparent
-                        opacity={isFollowing ? 1 : 0.9}
-                    />
+        <group position={position}>
+            {/* 3D Text */}
+            <Text
+                color="#ffffff"
+                fontSize={0.8}
+                anchorX="center"
+                anchorY="middle"
+                position={[0, 0, 0.06]}
+                outlineWidth={0.02}
+                outlineColor={color}
+            >
+                {text}
+            </Text>
 
-                    {/* Technology name text */}
-                    <Text
-                        position={[0, 0, 2.7]}
-                        fontSize={0.6}
-                        color="white"
-                        anchorX="center"
-                        anchorY="middle"
-                        outlineWidth={0.05}
-                        outlineColor="#000000"
-                    >
-                        {name}
-                    </Text>
-                </mesh>
-
-                {/* Glow effect */}
-                <pointLight
-                    color={techColor}
-                    intensity={isFollowing ? 3 : 1.5}
-                    distance={6}
+            {/* Carbon Tape Segment */}
+            <mesh position={[0, 0, 0]}>
+                <boxGeometry args={[4.8, 1.5, 0.1]} />
+                <meshStandardMaterial
+                    color="#151515"
+                    roughness={0.4}
+                    metalness={0.8}
                 />
-            </Float>
+            </mesh>
+
+            {/* Top and Bottom Borders for "Tape" look */}
+            <mesh position={[0, 0.7, 0.02]}>
+                <boxGeometry args={[4.8, 0.1, 0.1]} />
+                <meshStandardMaterial color="#333" emissive="#333" />
+            </mesh>
+            <mesh position={[0, -0.7, 0.02]}>
+                <boxGeometry args={[4.8, 0.1, 0.1]} />
+                <meshStandardMaterial color="#333" emissive="#333" />
+            </mesh>
         </group>
     );
 };
 
-// Single canvas with all balls
-const BallCanvas = ({ technologies }) => {
-    const [isMobile, setIsMobile] = React.useState(false);
+const CarouselCanvas = ({ technologies }) => {
+    // Add colors to technologies for variety if needed, or use a map
+    const techColors = useMemo(() => ({
+        'html': '#E34F26',
+        'css': '#1572B6',
+        'javascript': '#F7DF1E',
+        'typescript': '#3178C6',
+        'reactjs': '#61DAFB',
+        'redux': '#764ABC',
+        'tailwind': '#06B6D4',
+        'nodejs': '#339933',
+        'mongodb': '#47A248',
+        'threejs': '#ffffff',
+        'git': '#F05032',
+        'figma': '#F24E1E',
+        'docker': '#2496ED',
+    }), []);
 
-    React.useEffect(() => {
-        // Check if mobile device
-        const mediaQuery = window.matchMedia("(max-width: 768px)");
-        setIsMobile(mediaQuery.matches);
+    const Tape = () => {
+        const groupRef = useRef();
+        const speed = 1.5;
 
-        const handleMediaQueryChange = (event) => {
-            setIsMobile(event.matches);
-        };
+        // Duplicate list for infinite scroll effect (3 sets should be enough)
+        const items = useMemo(() => [...technologies, ...technologies, ...technologies], [technologies]);
+        const itemWidth = 5.0; // Width of one items + gap
+        const totalWidth = technologies.length * itemWidth;
 
-        mediaQuery.addEventListener("change", handleMediaQueryChange);
+        useFrame((state, delta) => {
+            if (groupRef.current) {
+                groupRef.current.position.x -= delta * speed;
 
-        return () => {
-            mediaQuery.removeEventListener("change", handleMediaQueryChange);
-        };
-    }, []);
+                // Seamless loop: when first set moves out, reset to 0
+                if (groupRef.current.position.x <= -totalWidth) {
+                    groupRef.current.position.x = 0;
+                }
+            }
+        });
 
-    // Calculate grid positions for balls
-    const getPosition = (index) => {
-        const cols = isMobile ? 2 : 5; // 2 columns on mobile, 5 on desktop
-        const row = Math.floor(index / cols);
-        const col = index % cols;
-        const spacingX = isMobile ? 7 : 6;
-        const spacingY = isMobile ? 7 : 6;
-
-        return [
-            (col - (cols - 1) / 2) * spacingX,
-            -(row - 1) * spacingY,
-            0
-        ];
-    };
-
-    // Filter technologies for mobile (show fewer on small screens for performance)
-    const displayTechnologies = isMobile ? technologies.slice(0, 8) : technologies;
+        return (
+            <group ref={groupRef}>
+                {items.map((tech, i) => (
+                    <TapeItem
+                        key={`${tech.name}-${i}`}
+                        text={tech.name}
+                        position={[i * itemWidth, 0, 0]}
+                        color={techColors[tech.icon] || '#915EFF'}
+                    />
+                ))}
+            </group>
+        )
+    }
 
     return (
         <Canvas
-            frameloop='always'
-            dpr={[1, isMobile ? 1 : 1.5]}
-            gl={{
-                preserveDrawingBuffer: true,
-                antialias: false,
-                powerPreference: "high-performance"
-            }}
-            camera={{
-                position: [0, 0, isMobile ? 20 : 25],
-                fov: isMobile ? 60 : 50
-            }}
-            style={{ height: isMobile ? '500px' : '600px' }}
+            dpr={[1, 2]}
+            gl={{ preserveDrawingBuffer: true }}
+            camera={{ position: [0, 0, 10], fov: 35 }}
+            style={{ height: '300px' }} // Reduced height for the tape
         >
             <Suspense fallback={<CanvasLoader />}>
-                <OrbitControls
-                    enableZoom={false}
-                    enablePan={false}
-                    enableRotate={false}
-                />
                 <ambientLight intensity={0.5} />
-                <directionalLight position={[5, 5, 5]} intensity={1} />
-                <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+                <pointLight position={[-10, -10, -10]} intensity={1} />
 
-                {displayTechnologies.map((tech, index) => (
-                    <Ball
-                        key={tech.name}
-                        icon={tech.icon}
-                        name={tech.name}
-                        position={getPosition(index)}
-                        index={index}
-                    />
-                ))}
+                {/* Center the tape vertically and tilt slightly for 3D effect if desired */}
+                <group position={[0, 0, 0]} rotation={[0.1, 0, 0]}>
+                    <Tape />
+                </group>
             </Suspense>
 
             <Preload all />
@@ -208,4 +118,4 @@ const BallCanvas = ({ technologies }) => {
     );
 };
 
-export default BallCanvas;
+export default CarouselCanvas;

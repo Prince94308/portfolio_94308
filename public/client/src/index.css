@@ -33,6 +33,11 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
 .dark {
   color-scheme: dark;
 }

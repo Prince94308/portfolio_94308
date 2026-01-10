@@ -18,7 +18,7 @@ const MagicCard = ({ children, className = "" }) => {
             </div>
 
             {/* Inner Content Card */}
-            <div className="bg-tertiary rounded-2xl min-h-[280px] p-5 relative z-10 flex justify-evenly items-center flex-col h-full">
+            <div className="bg-tertiary/60 backdrop-blur-lg border border-white/10 rounded-2xl min-h-[280px] p-5 relative z-10 flex justify-evenly items-center flex-col h-full">
                 {children}
             </div>
 

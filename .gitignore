@@ -43,3 +43,16 @@ lerna-debug.log*
 desktop.ini
 Thumbs.db
 
+# Testing
+coverage/
+.nyc_output/
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Lock files (uncomment if you want to ignore)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+

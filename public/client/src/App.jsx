@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Navbar, Hero, About, Experience, Tech, Works, Contact, Education, Certifications, Footer, FootballCursor, ClickSound, SmoothScroll, SimpleLoader } from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navbar, Hero, About, Experience, Tech, Works, Contact, Education, Certifications, Footer, FootballCursor, ClickSound, SmoothScroll, SimpleLoader, ProjectDetails } from "./components";
 
 const StarsCanvas = lazy(() => import('./components/canvas/Stars'));
 
@@ -13,25 +13,29 @@ const App = () => {
         <SmoothScroll>
           <ClickSound />
           <FootballCursor />
-          <div className="relative z-0 bg-primary transition-colors duration-300">
-            <div className="dark:bg-hero-pattern bg-cover bg-no-repeat bg-center">
-              <Navbar />
-              <Hero />
-            </div>
-            <About />
-            <Experience />
-            <Education />
-            <Tech />
-            <Works />
-            <Certifications />
-            {/* Feedbacks */}
-            <div className="relative z-0">
-              <Contact />
-              <Suspense fallback={<SimpleLoader />}>
-                <StarsCanvas />
-              </Suspense>
-            </div>
-            <Footer />
+          <Suspense fallback={<SimpleLoader />}>
+            <StarsCanvas />
+          </Suspense>
+          <div className="relative z-0 bg-transparent transition-colors duration-300">
+            <Routes>
+              <Route path="/" element={
+                <div className="bg-cover bg-no-repeat bg-center">
+                  <Navbar />
+                  <Hero />
+                  <About />
+                  <Experience />
+                  <Education />
+                  <Tech />
+                  <Works />
+                  <Certifications />
+                  <div className="relative z-0">
+                    <Contact />
+                  </div>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/project/:id" element={<ProjectDetails />} />
+            </Routes>
           </div>
         </SmoothScroll>
       </BrowserRouter>

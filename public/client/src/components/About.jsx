@@ -8,7 +8,7 @@ import { SectionWrapper } from "../hoc";
 import myProfileImg from "../assets/prince.jpg";
 import MagicCard from "./MagicCard";
 import WaveBackground from "./WaveBackground";
-import { FaCode, FaServer, FaShieldAlt, FaCloud, FaLaptopCode, FaEdit, FaCheck, FaTimes, FaPlus, FaTrash } from "react-icons/fa";
+import { FaCode, FaServer, FaShieldAlt, FaCloud, FaLaptopCode, FaEdit, FaCheck, FaTimes, FaPlus, FaTrash, FaCodeBranch } from "react-icons/fa";
 
 import "./Card.css";
 
@@ -18,6 +18,7 @@ const IconMap = {
     FaServer: FaServer,
     FaShieldAlt: FaShieldAlt,
     FaCloud: FaCloud,
+    FaCodeBranch: FaCodeBranch,
     FaCode: FaCode
 };
 
@@ -156,7 +157,7 @@ const About = () => {
     const [skillsData, setSkillsData] = useState(initialSkills);
 
     // Load data from localStorage on mount
-    useEffect(() => {
+    /* useEffect(() => {
         const storedSkills = localStorage.getItem('portfolio_skills');
         if (storedSkills) {
             try {
@@ -165,7 +166,7 @@ const About = () => {
                 console.error("Failed to parse skills from local storage", error);
             }
         }
-    }, []);
+    }, []); */
 
     // Save data to localStorage whenever it changes
     const updateSkillCategory = (categoryTitle, updatedSkills) => {

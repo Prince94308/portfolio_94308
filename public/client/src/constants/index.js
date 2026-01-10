@@ -9,6 +9,9 @@ import googleCert from '../assets/google cloud.png';
 import oracleCert from '../assets/oracle.png';
 import javaCert from '../assets/infosys.png';
 import accentureCert from '../assets/accenture.png';
+import apnaghar from '../assets/apnaghar.png';
+import edunexus from '../assets/edunexus.png';
+import portfolio from '../assets/portfolio.png';
 // =============================================================================
 
 export const navLinks = [
@@ -56,19 +59,23 @@ const skills = [
         color: "#00FFC2", // Bright Green/Teal
         skills: [
             {
-                name: "React",
+                name: "HTML",
                 level: "95%",
             },
             {
-                name: "TypeScript",
+                name: "CSS",
                 level: "90%",
             },
             {
-                name: "Next.js",
+                name: "Javascript",
                 level: "85%",
             },
             {
-                name: "Redux/Zustand", // Extra skill, will be hidden by default
+                name: "React/Redux", // Extra skill
+                level: "80%",
+            },
+            {
+                name: "Tailwind CSS", // Extra skill
                 level: "80%",
             },
         ],
@@ -83,61 +90,60 @@ const skills = [
                 level: "90%",
             },
             {
-                name: "Python",
+                name: "MySQL",
+                level: "75%",
+            },
+            {
+                name: "MongoDB",
                 level: "85%",
             },
             {
-                name: "GraphQL",
+                name: "Express.js",
                 level: "80%",
             },
             {
-                name: "Express.js", // Extra skill
+                name: "Java", // Extra skill
                 level: "90%",
             },
         ],
     },
-    {
-        icon: "FaShieldAlt", // Maps to Cybersecurity
-        title: "Cybersecurity",
-        color: "#8A2BE2", // BlueViolet for Security
-        skills: [
-            {
-                name: "Penetration Testing",
-                level: "95%",
-            },
-            {
-                name: "OWASP Top 10",
-                level: "90%",
-            },
-            {
-                name: "Metasploit",
-                level: "85%",
-            },
-            {
-                name: "Security Auditing", // Extra skill
-                level: "80%",
-            },
-        ],
-    },
+
+
     {
         icon: "FaCloud", // Maps to Cloud & DevOps
         title: "Cloud & DevOps",
         color: "#00BFFF", // Deep Sky Blue for Cloud
         skills: [
             {
-                name: "AWS",
+                name: "Azure fundamentals",
                 level: "90%",
             },
             {
-                name: "Docker",
+                name: "Salesforce (Admin)",
                 level: "85%",
             },
+
             {
-                name: "Kubernetes",
+                name: "Cloud Computing",
+                level: "90%",
+            },
+            {
+                name: "Google Cloud",
+                level: "85%",
+            },
+        ],
+    },
+    {
+        icon: "FaCodeBranch",
+        title: "Git & Version Control",
+        color: "#00BFFF", // Deep Sky Blue for Cloud
+        skills: [
+            {
+                name: "Git & GitHub",
                 level: "80%",
             },
             {
-                name: "Terraform", // Extra skill
+                name: "Postman", // Extra skill
                 level: "75%",
             },
         ],
@@ -215,57 +221,19 @@ const technologies = [
 // - points: Array of strings describing your responsibilities/achievements
 // =============================================================================
 
+
+
 const experiences = [
     {
-        title: "React.js Developer",
-        company_name: "Starbucks",
-        icon: "starbucks",
+        title: "Python Intern",
+        company_name: "Ramraj Technology Solutions Pvt. Ltd., Bhopal, India",
+        icon: "",
         iconBg: "#383E56",
-        date: "March 2020 - April 2021",
+        date: "Aug 2024",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "React Native Developer",
-        company_name: "Tesla",
-        icon: "tesla",
-        iconBg: "#E6DEDD",
-        date: "Jan 2021 - Feb 2022",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "Web Developer",
-        company_name: "Shopify",
-        icon: "shopify",
-        iconBg: "#383E56",
-        date: "Jan 2022 - Jan 2023",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "Full stack Developer",
-        company_name: "Meta",
-        icon: "meta",
-        iconBg: "#E6DEDD",
-        date: "Jan 2023 - Present",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Developed backend logic and script optimizations using Python to enhance system performance.",
+            "Implemented debugging protocols and adhered to strict coding standards for maintainable codebases.",
+            "Collaborated on documentation and version control practices using Git.",
         ],
     },
 ];
@@ -285,6 +253,7 @@ const experiences = [
 // - points: Array of strings describing achievements/highlights
 // =============================================================================
 
+
 const education = [
     {
         school_name: "Technocrats Institute of Technology (Excellence)",
@@ -292,33 +261,35 @@ const education = [
         date: "2023 - 2027",
         CGPA: "7.8/10",
         points: [
-            "Graduated with Honors.",
-            "Specialized in Software Engineering and Artificial Intelligence.",
-            "Member of the University Coding Club."
+            "Studying core subjects like Data Structures, Algorithms, DBMS, OS, and Computer Networks.",
+            "Hands-on experience with MERN stack, Machine Learning, and full-stack web development projects.",
+            "Actively participated in coding contests, hackathons, and technical workshops."
         ],
     },
     {
         school_name: "Mahanth Ramrup Goswami College",
-        degree: "Senior Secondary Education, PCM",
+        degree: "Senior Secondary Education (PCM)",
         date: "2021 - 2023",
         Percentage: "69.4%",
         points: [
-            "Focus on frontend technologies: HTML, CSS, JavaScript.",
-            "Completed capstone project on e-commerce websites."
+            "Completed Physics, Chemistry, and Mathematics with a strong analytical foundation.",
+            "Developed logical thinking and problem-solving skills through mathematics.",
+            "Participated in academic seminars and school-level science activities."
         ],
     },
-
     {
         school_name: "Sarswati Vidya Mandir",
         degree: "High School",
         date: "2016 - 2021",
         Percentage: "76.2%",
         points: [
-            "Focus on frontend technologies: HTML, CSS, JavaScript.",
-            "Completed capstone project on e-commerce websites."
+            "Built a strong foundation in Mathematics, Science, and Computer Basics.",
+            "Actively involved in extracurricular activities and school events.",
+            "Developed discipline, teamwork, and communication skills."
         ],
     },
 ];
+
 
 
 // =============================================================================
@@ -403,96 +374,136 @@ const certifications = [
     // },
 ];
 
-const testimonials = [
-    {
-        testimonial:
-            "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-        name: "Sara Lee",
-        designation: "CFO",
-        company: "Acme Co",
-        image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
-    {
-        testimonial:
-            "I've never met a web developer who truly cares about their clients' success like Rick does.",
-        name: "Chris Brown",
-        designation: "COO",
-        company: "DEF Corp",
-        image: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    {
-        testimonial:
-            "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-        name: "Lisa Wang",
-        designation: "CTO",
-        company: "456 Enterprises",
-        image: "https://randomuser.me/api/portraits/women/6.jpg",
-    },
-];
+
+
+const testimonials = [];
 
 const projects = [
     {
-        name: "Car Rent",
+        id: "apna-ghar",
+        name: "Apna Ghar",
         description:
-            "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+            "A full-stack real estate property management platform for listing, searching, and purchasing properties with secure authentication and payments.",
+        detailed_description:
+            "Apna Ghar is a comprehensive MERN-based real estate platform that allows users to browse, filter, and manage property listings with advanced search options. Users can create listings with multiple images, view property locations on interactive maps, save favorites, and securely complete transactions using PayPal integration. The platform includes JWT-based authentication, user profiles with avatar uploads, and a responsive modern UI for seamless user experience.",
         tags: [
             {
-                name: "react",
+                name: "React",
                 color: "blue-text-gradient",
             },
             {
-                name: "mongodb",
+                name: "Redux Toolkit",
+                color: "purple-text-gradient",
+            },
+            {
+                name: "Node.js",
                 color: "green-text-gradient",
             },
             {
-                name: "tailwind",
+                name: "MongoDB",
+                color: "green-text-gradient",
+            },
+            {
+                name: "Tailwind CSS",
                 color: "pink-text-gradient",
             },
+            {
+                name: "Leaflet",
+                color: "yellow-text-gradient",
+            },
+            {
+                name: "PayPal",
+                color: "blue-text-gradient",
+            },
         ],
-        image: "carrent",
-        source_code_link: "https://github.com/",
-    },
+        image: apnaghar,
+        source_code_link: "https://github.com/Prince94308/ApnaGharBazar.git",
+    }
+    ,
     {
-        name: "Job IT",
+        id: "educonnect-nexus",
+        name: "EduConnect Nexus",
         description:
-            "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+            "An AI-powered education platform connecting students and educators with real-time communication, intelligent analytics, and personalized learning experiences.",
+        detailed_description:
+            "EduConnect Nexus is a full-stack, AI-driven learning platform built using React, Node.js, and FastAPI. It enables students and educators to interact through real-time messaging, manage educational content, and visualize learning progress via dashboards. The platform integrates advanced AI capabilities such as face recognition, generative AI assistance, and machine learning models for analytics and personalization. Secure authentication, cloud-based file handling, and scalable architecture make it a robust modern EdTech solution.",
         tags: [
             {
-                name: "react",
+                name: "React",
                 color: "blue-text-gradient",
             },
             {
-                name: "restapi",
+                name: "Redux Toolkit",
+                color: "purple-text-gradient",
+            },
+            {
+                name: "Tailwind CSS",
+                color: "pink-text-gradient",
+            },
+            {
+                name: "Material UI",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "Node.js",
                 color: "green-text-gradient",
             },
             {
-                name: "scss",
+                name: "Express.js",
+                color: "green-text-gradient",
+            },
+            {
+                name: "MongoDB",
+                color: "green-text-gradient",
+            },
+            {
+                name: "Socket.io",
+                color: "yellow-text-gradient",
+            },
+            {
+                name: "FastAPI",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "PyTorch",
+                color: "orange-text-gradient",
+            },
+            {
+                name: "Generative AI",
                 color: "pink-text-gradient",
             },
         ],
-        image: "jobit",
-        source_code_link: "https://github.com/",
-    },
+        image: edunexus,
+        source_code_link: "https://github.com/Prince94308/EduConnect-Nexus.git",
+    }
+    ,
     {
-        name: "Trip Guide",
+        id: "portfolio",
+        name: "Portfolio",
         description:
-            "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+            "A fully responsive, 3D interactive developer portfolio showcasing skills, projects, and professional experience using immersive animations.",
+        detailed_description:
+            "This portfolio website is a showcase of creative coding and modern web development. It leverages Three.js for 3D graphics, Framer Motion for complex animations, and React for a component-based structure. It is designed to be fully responsive and performant across all devices.",
         tags: [
             {
-                name: "nextjs",
+                name: "React",
                 color: "blue-text-gradient",
             },
             {
-                name: "supabase",
+                name: "Three.js",
                 color: "green-text-gradient",
             },
             {
-                name: "css",
+                name: "Framer Motion",
                 color: "pink-text-gradient",
             },
+            {
+                name: "Vite",
+                color: "yellow-text-gradient",
+            },
         ],
-        image: "tripguide",
-        source_code_link: "https://github.com/",
+        image: portfolio,
+        source_code_link: "https://github.com/Prince94308/Portfolio.git",
     },
 ];
 

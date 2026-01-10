@@ -90,7 +90,7 @@ const Hero = () => {
             >
                 <div className="flex flex-col justify-center items-start mt-5 z-10 pointer-events-auto max-w-2xl">
                     {/* Status Badge */}
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#1d1836] border border-[#33E2E2]/30 shadow-[0_0_10px_rgba(51,226,226,0.2)] mb-6 w-fit">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#1d1836]/60 backdrop-blur-md border border-[#33E2E2]/30 shadow-[0_0_10px_rgba(51,226,226,0.2)] mb-6 w-fit">
                         <span className="text-xl">👋</span>
                         <p className="text-[#33E2E2] font-mono text-sm tracking-wide">
                             Hello, I'm available for work
@@ -125,17 +125,17 @@ const Hero = () => {
 
                     {/* Description */}
                     <p className="mt-6 text-secondary text-[16px] max-w-lg leading-[30px]">
-                        I craft secure, scalable digital solutions that protect and perform. Specializing in penetration testing, secure architecture, and modern Enterprise  applications with <span className="text-[#33E2E2] font-bold">2+ years</span> of experience.
+                        I craft secure, scalable digital solutions that protect and perform. Specializing in penetration testing, secure architecture, and modern Enterprise  applications with <span className="text-[#33E2E2] font-bold">6+ Months</span> of experience.
                     </p>
 
                     {/* Stats */}
                     <div className="flex flex-row gap-10 mt-10 border-t border-white-100/10 pt-6 w-[85%]">
                         <div className="flex flex-col items-center">
-                            <h3 className="text-[#33E2E2] text-3xl font-bold">50+</h3>
+                            <h3 className="text-[#33E2E2] text-3xl font-bold">6+</h3>
                             <p className="text-secondary text-sm uppercase tracking-wider">Projects Completed</p>
                         </div>
                         <div className="flex flex-col items-center">
-                            <h3 className="text-[#E233E2] text-3xl font-bold">8</h3>
+                            <h3 className="text-[#E233E2] text-3xl font-bold">6</h3>
                             <p className="text-secondary text-sm uppercase tracking-wider">Certifications</p>
                         </div>
                         <div className="flex flex-col items-center">

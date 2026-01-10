@@ -10,8 +10,11 @@ import { projects } from "../constants";
 
 import MagicCard from "./MagicCard";
 
+import { Link } from "react-router-dom";
+
 const ProjectCard = ({
     index,
+    id,
     name,
     description,
     tags,
@@ -21,24 +24,27 @@ const ProjectCard = ({
     return (
         <MagicCard className='w-full sm:w-[360px]'>
             <div className='relative w-full h-[230px]'>
-                <div className="w-full h-full bg-indigo-900 rounded-2xl flex items-center justify-center text-white text-lg font-bold">
-                    {name} Image
-                </div>
+                <img
+                    src={image}
+                    alt='project_image'
+                    className='w-full h-full object-cover rounded-2xl'
+                />
 
                 <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
                     <div
                         onClick={() => window.open(source_code_link, "_blank")}
-                        className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-white/20 transition-colors'
+                        className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-white/20 transition-colors z-10'
+                        title="View Source Code"
                     >
-                        <div className="text-xs text-white">GH</div>
+                        <div className="text-xs text-white font-bold">GH</div>
                     </div>
                 </div>
             </div>
 
-            <div className='mt-5'>
-                <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-                <p className='mt-2 text-secondary text-[14px]'>{description}</p>
-            </div>
+            <Link to={`/project/${id}`} className="block mt-5 cursor-pointer">
+                <h3 className='text-white font-bold text-[24px] hover:text-[#00FF9D] transition-colors'>{name}</h3>
+                <p className='mt-2 text-secondary text-[14px] line-clamp-3'>{description}</p>
+            </Link>
 
             <div className='mt-4 flex flex-wrap gap-2'>
                 {tags.map((tag) => (
@@ -46,7 +52,7 @@ const ProjectCard = ({
                         key={`${name}-${tag.name}`}
                         className={`text-[14px] ${tag.color}`}
                     >
-                        #{tag.name}
+                        {tag.name}
                     </p>
                 ))}
             </div>
