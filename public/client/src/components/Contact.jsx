@@ -1,10 +1,6 @@
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
-
-import { styles } from "../styles";
-import { AbstractBallRingCanvas } from "./canvas";
-import { SectionWrapper } from "../hoc";
+// ... existing imports
 
 const Contact = () => {
   const formRef = useRef();
@@ -32,24 +28,33 @@ const Contact = () => {
 
     setLoading(true);
 
-    // 1️⃣ Send email via backend
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api/contact";
+    // EmailJS integration
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        subject: form.subject,
-        message: form.message,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
+    if (!serviceId || !templateId || !publicKey) {
+      alert("EmailJS environment variables are missing. Please check your .env file.");
+      setLoading(false);
+      return;
+    }
+
+    emailjs
+      .send(
+        serviceId,
+        templateId,
+        {
+          from_name: form.name,
+          to_name: "Prince Kumar",
+          from_email: form.email,
+          subject: form.subject,
+          message: form.message,
+        },
+        publicKey
+      )
+      .then(
+        () => {
+          setLoading(false);
           alert("Thank you! Your message has been sent successfully.");
           setForm({
             name: "",
@@ -57,20 +62,13 @@ const Contact = () => {
             subject: "",
             message: "",
           });
-        } else {
-          // Throw the specific error from the server if available
-          const errorMessage = data.error || data.message || "Failed to send message";
-          throw new Error(errorMessage);
+        },
+        (error) => {
+          setLoading(false);
+          console.error("EmailJS Error:", error);
+          alert("Ahh, something went wrong. Please try again.");
         }
-      })
-      .catch((error) => {
-        console.error("Error sending email:", error);
-        // Show the actual error message to the user
-        alert(`Failed to send message: ${error.message}`);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      );
   };
 
   return (

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Navbar, Hero, About, Experience, Tech, Works, Contact, Education, Certifications, Footer, FootballCursor, ClickSound, SmoothScroll, SimpleLoader, ProjectDetails } from "./components";
 
 const StarsCanvas = lazy(() => import('./components/canvas/Stars'));
@@ -9,7 +9,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 const App = () => {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <SmoothScroll>
           <ClickSound />
           <FootballCursor />
@@ -38,7 +38,7 @@ const App = () => {
             </Routes>
           </div>
         </SmoothScroll>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 };

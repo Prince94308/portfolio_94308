@@ -1,9 +1,12 @@
 {
-  "name": "server",
+  "name": "portfolio_94308",
+"homepage": "https://github.com/Prince94308/portfolio_94308",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+"predeploy": "npm run build",
+"deploy": "gh-pages -d dist",
   "scripts": {
     "start": "nodemon index.js"
   },

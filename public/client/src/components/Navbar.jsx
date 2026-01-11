@@ -48,7 +48,7 @@ const Navbar = () => {
                         <span className="text-[#00FFFF]">r</span>
                     </p>
                 </Link>
-                <ul className="list-none hidden sm:flex flex-row gap-10">
+                <ul className="list-none hidden md:flex flex-row gap-10">
                     {navLinks.map((link) => (
                         <motion.li
                             key={link.id}
@@ -68,7 +68,7 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                <div className="hidden sm:flex flex-row gap-5 items-center">
+                <div className="hidden md:flex flex-row gap-5 items-center">
                     {socialLinks.map((social, index) => (
                         <motion.a
                             key={index}
@@ -89,7 +89,7 @@ const Navbar = () => {
                     <ThemeToggle />
                 </div>
 
-                <div className="sm:hidden flex flex-1 justify-end items-center">
+                <div className="md:hidden flex flex-1 justify-end items-center">
                     <div
                         className="w-[28px] h-[28px] object-contain cursor-pointer flex flex-col justify-center gap-1"
                         onClick={() => setToggle(!toggle)}

@@ -373,10 +373,11 @@ const Mouse = ({ position }) => {
 
 // Main workspace scene with animated spheres
 const RobotWorkspace = ({ isMobile }) => {
-    const scale = 1.5; // Scale factor for larger model
+    const scale = isMobile ? 0.8 : 1.5; // Smaller scale for mobile/tablet
+    const position = isMobile ? [0, -1, 0] : [0, 0, 0]; // Adjust position for mobile
 
     return (
-        <group scale={[scale, scale, scale]}>
+        <group scale={[scale, scale, scale]} position={position}>
             {/* Enhanced Lighting */}
             <ambientLight intensity={0.3} />
 
@@ -442,7 +443,8 @@ const ComputersCanvas = () => {
 
     useEffect(() => {
         // Add a listener for changes to the screen size
-        const mediaQuery = window.matchMedia("(max-width: 500px)");
+        // Changed to 1024px to include tablets
+        const mediaQuery = window.matchMedia("(max-width: 1024px)");
 
         // Set the initial value of the `isMobile` state variable
         setIsMobile(mediaQuery.matches);
@@ -474,13 +476,15 @@ const ComputersCanvas = () => {
             }}
             style={{
                 position: 'absolute',
-                right: '0%',       // Shifted 10% more to the left
-                top: '10%',        // Shifted 10% down from top
-                bottom: 0,         // Extend to bottom
-                width: '48%',      // Increased width
-                height: '100%',    // Full height
+                // Responsive styles
+                right: isMobile ? '0%' : '0%',
+                left: isMobile ? '0%' : 'auto',
+                top: isMobile ? 'auto' : '10%',
+                bottom: 0,
+                width: isMobile ? '100%' : '48%',
+                height: isMobile ? '60%' : '100%',
                 pointerEvents: 'auto',
-                background: 'transparent'  // Make background transparent
+                background: 'transparent'
             }}
         >
             <Suspense fallback={<CanvasLoader />}>
