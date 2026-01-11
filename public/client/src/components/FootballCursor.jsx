@@ -8,10 +8,14 @@ const FootballCursor = () => {
     const mouse = useRef({ x: 0, y: 0 });
     const speed = 0.15; // Follow speed (0.1 to 1)
 
+    const [isTouch, setIsTouch] = React.useState(false);
+
     useEffect(() => {
-        // Disable on touch devices
-        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        if (isTouch) return;
+        // Check for touch device on mount
+        const checkTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        setIsTouch(checkTouch);
+
+        if (checkTouch) return;
 
         // Initial position outside screen or center
         pos.current = { x: -100, y: -100 };
@@ -59,6 +63,8 @@ const FootballCursor = () => {
             gsap.ticker.remove(loop);
         };
     }, []);
+
+    if (isTouch) return null;
 
     return (
         <div

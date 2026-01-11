@@ -63,7 +63,19 @@ const Navbar = () => {
                             }}
                             transition={{ type: "spring", stiffness: 300, damping: 10 }}
                         >
-                            <a href={link.id ? `#${link.id}` : "/"}>{link.title}</a>
+                            <span
+                                onClick={() => {
+                                    setActive(link.title);
+                                    const element = document.getElementById(link.id);
+                                    if (element) {
+                                        element.scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                        window.scrollTo(0, 0);
+                                    }
+                                }}
+                            >
+                                {link.title}
+                            </span>
                         </motion.li>
                     ))}
                 </ul>
@@ -115,7 +127,14 @@ const Navbar = () => {
                                         setActive(link.title);
                                     }}
                                 >
-                                    <a href={`#${link.id}`}>{link.title}</a>
+                                    <span
+                                        onClick={() => {
+                                            const element = document.getElementById(link.id);
+                                            if (element) element.scrollIntoView({ behavior: "smooth" });
+                                        }}
+                                    >
+                                        {link.title}
+                                    </span>
                                 </li>
                             ))}
                             {/* Social Icons (Mobile) */}

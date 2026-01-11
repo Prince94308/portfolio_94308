@@ -30,32 +30,29 @@ const AbstractRing = () => {
 
             const scale = 0.2 + Math.random() * 0.4; // Reduced scale
 
-            // Material variants - Professional Dark Metallic
-            const type = Math.random();
+            // Material variants - 12 Distinct Vibrant Colors
             let color, roughness, metalness, transmission, opacity;
 
-            if (type > 0.7) {
-                // Platinum/Silver (Clear Visible Accent)
-                color = "#E0E0E0";
-                roughness = 0.1;
-                metalness = 1.0;
-                transmission = 0;
-                opacity = 1;
-            } else if (type > 0.4) {
-                // Deep Midnight Blue
-                color = "#0F172A";
-                roughness = 0.2;
-                metalness = 0.9;
-                transmission = 0;
-                opacity = 1;
-            } else {
-                // Obsidian/Dark Grey
-                color = "#333333";
-                roughness = 0.1;
-                metalness = 0.8;
-                transmission = 0;
-                opacity = 1;
-            }
+            const palette = [
+                "#EF4444", // Red
+                "#F97316", // Orange
+                "#F59E0B", // Amber
+                "#EAB308", // Yellow
+                "#84CC16", // Lime
+                "#22C55E", // Green
+                "#10B981", // Emerald
+                "#06B6D4", // Cyan
+                "#3B82F6", // Blue
+                "#6366F1", // Indigo
+                "#8B5CF6", // Violet
+                "#EC4899"  // Pink
+            ];
+
+            color = palette[Math.floor(Math.random() * palette.length)];
+            roughness = 0.15;
+            metalness = 0.9;
+            transmission = 0;
+            opacity = 1;
 
             list.push({ position: [x, y, z], scale, color, roughness, metalness, transmission, opacity });
         }

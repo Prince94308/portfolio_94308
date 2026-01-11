@@ -1,6 +1,10 @@
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-// ... existing imports
+import { styles } from "../styles";
+import { AbstractBallRingCanvas } from "./canvas";
+import { SectionWrapper } from "../hoc";
 
 const Contact = () => {
   const formRef = useRef();

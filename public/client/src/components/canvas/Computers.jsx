@@ -373,8 +373,8 @@ const Mouse = ({ position }) => {
 
 // Main workspace scene with animated spheres
 const RobotWorkspace = ({ isMobile }) => {
-    const scale = isMobile ? 0.8 : 1.5; // Smaller scale for mobile/tablet
-    const position = isMobile ? [0, -1, 0] : [0, 0, 0]; // Adjust position for mobile
+    const scale = isMobile ? 0.7 : 1.5; // Smaller scale for mobile/tablet
+    const position = isMobile ? [0, -3, 0] : [0, 0, 0]; // Adjust position for mobile
 
     return (
         <group scale={[scale, scale, scale]} position={position}>
