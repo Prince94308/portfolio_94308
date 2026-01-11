@@ -31,6 +31,10 @@ public/server/dist/
 .envrc
 
 # Specific environment files in subdirectories
+client/.env
+client/.env.*
+client/.env.local
+client/.env.production
 public/client/.env
 public/client/.env.*
 public/client/.env.local
@@ -39,6 +43,7 @@ public/server/.env
 public/server/.env.*
 public/server/.env.local
 public/server/.env.production
+public/server/.env.example
 
 # Configuration files with secrets
 config.json
