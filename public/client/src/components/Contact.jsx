@@ -35,6 +35,7 @@ const Contact = () => {
     // EmailJS integration
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
@@ -43,36 +44,41 @@ const Contact = () => {
       return;
     }
 
-    emailjs
-      .send(
-        serviceId,
-        templateId,
-        {
-          from_name: form.name,
-          to_name: "Prince Kumar",
-          from_email: form.email,
-          subject: form.subject,
-          message: form.message,
-        },
-        publicKey
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you! Your message has been sent successfully.");
-          setForm({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error("EmailJS Error:", error);
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
+    const templateParams = {
+      name: form.name,
+      to_name: "Prince Kumar",
+      email: form.email,
+      title: form.subject,
+      message: form.message,
+    };
+
+    // Send both Main Email and Auto-Reply
+    Promise.all([
+      emailjs.send(serviceId, templateId, templateParams, publicKey),
+      autoReplyTemplateId
+        ? emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey)
+        : Promise.resolve(), // Skip if no auto-reply ID
+    ]).then(
+      () => {
+        setLoading(false);
+        alert("Thank you! Your message has been sent successfully.");
+        setForm({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      },
+      (error) => {
+        setLoading(false);
+        console.error("EmailJS Error:", error);
+
+        // Extract error message safely
+        const errorMessage =
+          error?.text || error?.message || "Something went wrong.";
+        alert(`Failed to send email: ${errorMessage}`);
+      }
+    );
   };
 
   return (

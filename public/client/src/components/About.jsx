@@ -219,7 +219,7 @@ const About = () => {
 
                     <div className='text-secondary text-[16px] leading-[30px] text-justify md:text-left flex flex-col gap-4'>
                         <p>
-                            I am a Full Stack Developer with 2+ years of experience in building scalable, high-performance web applications and enterprise websites. My technical expertise spans the MERN Stack (MongoDB, Express.js, React.js, Node.js) and Java-based backend development.
+                            I am a Full Stack Developer with 6+ Months of experience in building scalable, high-performance web applications and enterprise websites. My technical expertise spans the MERN Stack (MongoDB, Express.js, React.js, Node.js) and Java-based backend development.
                         </p>
                         <p>
                             I specialize in implementing robust authentication systems and developing applications with enterprise-grade standards, focusing on performance, scalability, and maintainability.
