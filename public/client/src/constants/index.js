@@ -417,7 +417,7 @@ const projects = [
             },
         ],
         image: apnaghar,
-        source_code_link: "https://github.com/Prince94308/ApnaGharBazar.git",
+        source_code_link: "https://github.com/Prince94308",
     }
     ,
     {
@@ -474,7 +474,7 @@ const projects = [
             },
         ],
         image: edunexus,
-        source_code_link: "https://github.com/Prince94308/EduConnect-Nexus.git",
+        source_code_link: "https://github.com/Prince94308",
     }
     ,
     {
@@ -503,7 +503,7 @@ const projects = [
             },
         ],
         image: portfolio,
-        source_code_link: "https://github.com/Prince94308/Portfolio.git",
+        source_code_link: "https://github.com/Prince94308",
     },
 ];
 
